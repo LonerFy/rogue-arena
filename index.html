@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Rogue Arena — Mini-jeu de survie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="logo">⚔️ <span>ROGUE ARENA</span></div>
+    <div class="top-actions">
+      <div id="modeSelector" role="tablist" aria-label="Mode de contrôle">
+        <button class="mode-btn active" data-mode="keyboard" type="button">⌨️ Clavier</button>
+        <button class="mode-btn" data-mode="mouse" type="button">🖱️ Souris</button>
+        <button class="mode-btn" data-mode="touch" type="button">👆 Tactile</button>
+      </div>
+      <button id="btnSound" class="icon-btn" type="button" aria-label="Son">🔊</button>
+      <button id="btnPause" class="icon-btn" type="button" aria-label="Pause">⏸️</button>
+    </div>
+  </header>
+
+  <div id="hud">
+    <div class="hud-left">
+      <div class="bar hp"><div id="hpFill"></div><span id="hpText">100/100</span></div>
+      <div class="bar xp"><div id="xpFill"></div><span id="xpText">Nv 1</span></div>
+    </div>
+    <div class="hud-right">
+      <div class="stat">⭐ <b id="score">0</b></div>
+      <div class="stat">🌊 Vague <b id="wave">1</b></div>
+      <div class="stat">💀 <b id="kills">0</b></div>
+      <div class="stat">⏱️ <b id="time">0:00</b></div>
+    </div>
+  </div>
+
+  <div id="bossBar" class="hidden">
+    <span id="bossName">👹 BOSS</span>
+    <div class="boss-track"><div id="bossFill"></div></div>
+  </div>
+
+  <div id="stage">
+    <canvas id="game"></canvas>
+    <div id="flash"></div>
+    <div id="rideau"><div class="panel left"></div><div class="panel right"></div></div>
+
+    <div id="menu" class="overlay">
+      <div class="card">
+        <h1>⚔️ ROGUE ARENA</h1>
+        <p class="sub">Survis aux vagues. Ramasse les gemmes. Terrasse le <b>BOSS</b> toutes les 5 vagues.</p>
+        <ul class="help">
+          <li>⌨️ <b>Clavier :</b> ZQSD / WASD / flèches</li>
+          <li>🖱️ <b>Souris :</b> le guerrier suit ton curseur</li>
+          <li>👆 <b>Tactile :</b> joystick virtuel en bas à gauche</li>
+          <li>🗡️ Attaque automatique sur l'ennemi le plus proche</li>
+        </ul>
+        <p id="menuBest" class="best">Meilleur score : 0</p>
+        <button id="btnPlay" type="button">▶ JOUER</button>
+      </div>
+    </div>
+
+    <div id="gameover" class="overlay hidden">
+      <div class="card">
+        <h2>💀 PARTIE TERMINÉE</h2>
+        <div id="scoreDetail" class="score-detail"></div>
+        <p id="newBest" class="best hidden">🏆 Nouveau record !</p>
+        <div class="row">
+          <button id="btnReplay" type="button">🔄 Rejouer</button>
+          <button id="btnMenu" type="button" class="ghost">🏠 Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="pauseOverlay" class="overlay hidden">
+      <div class="card small"><h2>⏸️ Pause</h2><p>Appuie sur P ou sur ▶ pour reprendre.</p>
+      <button id="btnResume" type="button">▶ Reprendre</button></div>
+    </div>
+
+    <div id="joystick"><div id="stick"></div></div>
+    <div id="toast"></div>
+  </div>
+
+  <footer id="hint">ZQSD / flèches • Souris • Tactile — P = pause • M = son</footer>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
